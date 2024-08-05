@@ -372,6 +372,7 @@ class GattClient(private val context: Context) {
             }
         }
 
+        // TODO: If an exception is thrown, this won't be called and then we will leak
         coroutineContext.job.invokeOnCompletion { fwkAdapter.closeGatt() }
 
         gattScope.block(mtuSize)
